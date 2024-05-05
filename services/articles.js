@@ -1,4 +1,4 @@
-const articlesModel = require('../models')
+const { articlesModel } = require('../models')
 
 class ArticlesService {
   async getAll() {

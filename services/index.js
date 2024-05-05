@@ -1,3 +1,4 @@
 const articlesService = require('./articles')
+const commentsService = require('./comments')
 
-module.exports = articlesService
+module.exports = { articlesService, commentsService }
