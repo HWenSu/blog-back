@@ -1,7 +1,7 @@
 const Service = require('./service')
 const { commentsModel } = require('../models')
 
-class CommentsService extends Service{
+class CommentsService extends Service {
   async getAll() {
     const comments = await commentsModel.read()
     return comments

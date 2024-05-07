@@ -1,10 +1,22 @@
 const Service = require('./service')
 const { articlesModel } = require('../models')
+const categoriesService = require('./categories.js')
 
 class ArticlesService extends Service {
   async getAll() {
+    // articles table
     const articles = await articlesModel.read()
-    return articles
+
+    // articles table + categories table
+    const newArticles = await Promise.all(
+      articles.map(async (article) => {
+        const categories = article.categories
+        const articleCategories = await categoriesService.getByManyId(categories)
+        return { ...article, categories: articleCategories }
+      })
+    )
+
+    return newArticles
   }
 
   async getById(id, key = 'id', one = true) {

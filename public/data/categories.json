@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "category": "區塊鏈"
+  },
+  {
+    "id": 2,
+    "category": "科技"
+  },
+  {
+    "id": 3,
+    "category": "經濟"
+  },
+  {
+    "id": 4,
+    "category": "趨勢"
+  },
+  {
+    "id": 5,
+    "category": "遊戲"
+  },
+  {
+    "id": 6,
+    "category": "美食"
+  },
+  {
+    "id": 7,
+    "category": "電影"
+  },
+  {
+    "id": 8,
+    "category": "音樂"
+  },
+  {
+    "id": 9,
+    "category": "工程"
+  },
+  {
+    "id": 10,
+    "category": "戶外"
+  }
+]
