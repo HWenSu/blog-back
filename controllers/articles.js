@@ -1,20 +1,17 @@
 const { articlesService } = require('../services')
 
 class ArticlesController {
-  // async getArticles(req, res) {
-  //   const articles = await articlesService.getAll()
-  //   res.send(articles)
-  // }
-
   async getArticle(req, res) {
     const id = req.params.id
     const article = await articlesService.getById(id)
     res.send(article)
   }
 
-  async getSearchedArticles(req, res) {
-    const keyword = req.query.search
-    const articles = await articlesService.getSearched(keyword)
+  async getArticles(req, res) {
+    const keyword = req.query.search?.trim()
+    const query = req.query
+    const allArticles = await articlesService.getByKeyword(keyword)
+    const articles = articlesService.feedData(allArticles, query)
     res.send(articles)
   }
 }

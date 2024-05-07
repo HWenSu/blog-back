@@ -1,18 +1,21 @@
+const Service = require('./service')
 const { articlesModel } = require('../models')
 
-class ArticlesService {
+class ArticlesService extends Service {
   async getAll() {
     const articles = await articlesModel.read()
     return articles
   }
 
-  async getById(id) {
+  async getById(id, key = 'id', one = true) {
     const articles = await this.getAll()
-    const article = articles.find((article) => article.id === Number(id))
+    const article = one
+      ? articles.find((article) => article[key] === Number(id))
+      : articles.filter((article) => article[key] === Number(id))
     return article
   }
 
-  async getSearched(keyword) {
+  async getByKeyword(keyword) {
     const articles = await this.getAll()
     const matched = keyword
       ? articles.filter((article) =>

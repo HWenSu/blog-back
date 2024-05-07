@@ -2,9 +2,11 @@ const { commentsService } = require('../services')
 
 class CommentsController {
   async getComments(req, res) {
-    const articleId = req.params.id
-    const comment = await commentsService.getByKey('articleId', articleId)
-    res.send(comment)
+    const id = req.params.id
+    const query = req.query
+    const allComments = await commentsService.getById(id, 'articleId', false)
+    const comments = commentsService.feedData(allComments, query)
+    res.send(comments)
   }
 }
 

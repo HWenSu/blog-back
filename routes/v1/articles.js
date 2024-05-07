@@ -3,7 +3,7 @@ const router = Router()
 
 const { articlesController } = require('../../controllers')
 
-router.get('/', articlesController.getSearchedArticles)
+router.get('/', articlesController.getArticles)
 router.get('/:id', articlesController.getArticle)
 
 module.exports = router
