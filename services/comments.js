@@ -1,10 +1,22 @@
 const Service = require('./service')
 const { commentsModel } = require('../models')
+const usersService = require('./users.js')
 
 class CommentsService extends Service {
   async getAll() {
+    // comments table
     const comments = await commentsModel.read()
-    return comments
+
+    // comments table + users table
+    const commentsUsers = await Promise.all(
+      comments.map(async (comment) => {
+        const id = comment.user
+        const userData = await usersService.getById(id)
+        return { ...comment, user: userData }
+      })
+    )
+
+    return commentsUsers
   }
 
   async getById(id, key = 'id', one = true) {

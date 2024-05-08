@@ -1,5 +1,7 @@
 const articlesModel = require('./articles')
-const commentsModel = require('./comments')
 const categoriesModel = require('./categories')
+const articlesCategoriesModel = require('./articles_categories')
+const commentsModel = require('./comments')
+const usersModel = require('./users')
 
-module.exports = { articlesModel, commentsModel, categoriesModel }
+module.exports = { articlesModel, categoriesModel, articlesCategoriesModel, commentsModel, usersModel }

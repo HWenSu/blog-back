@@ -17,8 +17,8 @@ class CategoriesService {
   async getByManyId(ids) {
     const categories = await Promise.all(
       ids.map(async (id) => {
-        const categoryData = await this.getById(id)
-        return categoryData.category
+        const category = await this.getById(id)
+        return category
       })
     )
     return categories

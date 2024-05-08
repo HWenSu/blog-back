@@ -4,7 +4,7 @@ class CommentsController {
   async getComments(req, res) {
     const id = req.params.id
     const query = req.query
-    const allComments = await commentsService.getById(id, 'articleId', false)
+    const allComments = await commentsService.getById(id, 'article_id', false)
     const comments = commentsService.feedData(allComments, query)
     res.send(comments)
   }

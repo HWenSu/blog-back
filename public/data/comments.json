@@ -1,184 +1,158 @@
 [
   {
     "id": 1,
-    "avatar": "https://miro.medium.com/v2/resize:fill:55:55/0*M88VM32Ftr5zz1jb.jpg",
-    "username": "Hu Kenneth",
-    "articleId": 9,
+    "user": 1,
+    "article_id": 9,
     "comment": "好好笑!"
   },
   {
     "id": 2,
-    "avatar": "https://miro.medium.com/v2/resize:fill:55:55/1*ERjtxwhrtDr_XbmmXmy64w.jpeg",
-    "username": "Happy Lee",
-    "articleId": 10,
+    "user": 2,
+    "article_id": 10,
     "comment": "酷ㄟ~"
   },
   {
     "id": 3,
-    "avatar": "https://miro.medium.com/v2/resize:fill:55:55/2*KMdVTUrr3mbgs7mA3L2mCg.jpeg",
-    "username": "CYL",
-    "articleId": 1,
+    "user": 3,
+    "article_id": 1,
     "comment": "太棒了!"
   },
   {
     "id": 4,
-    "avatar": "https://miro.medium.com/v2/resize:fill:55:55/1*WshmYDXpuekZCg2qCDRTFg.png",
-    "username": "HKEJ",
-    "articleId": 2,
+    "user": 4,
+    "article_id": 2,
     "comment": "好喜歡這個內容!"
   },
   {
     "id": 5,
-    "avatar": "https://miro.medium.com/v2/resize:fill:55:55/2*TD1Ha3HJ7Ki4AjQeE_-2Xg.png",
-    "username": "Sam Liang",
-    "articleId": 3,
+    "user": 5,
+    "article_id": 3,
     "comment": "不喜歡"
   },
   {
     "id": 6,
-    "avatar": "https://miro.medium.com/v2/resize:fill:55:55/0*M88VM32Ftr5zz1jb.jpg",
-    "username": "Hu Kenneth",
-    "articleId": 4,
+    "user": 1,
+    "article_id": 4,
     "comment": "很沒創意"
   },
   {
     "id": 7,
-    "avatar": "https://miro.medium.com/v2/resize:fill:55:55/1*ERjtxwhrtDr_XbmmXmy64w.jpeg",
-    "username": "Happy Lee",
-    "articleId": 5,
+    "user": 2,
+    "article_id": 5,
     "comment": "長知識了"
   },
   {
     "id": 8,
-    "avatar": "https://miro.medium.com/v2/resize:fill:55:55/2*KMdVTUrr3mbgs7mA3L2mCg.jpeg",
-    "username": "CYL",
-    "articleId": 6,
+    "user": 3,
+    "article_id": 6,
     "comment": "頭香"
   },
   {
     "id": 9,
-    "avatar": "https://miro.medium.com/v2/resize:fill:55:55/1*WshmYDXpuekZCg2qCDRTFg.png",
-    "username": "HKEJ",
-    "articleId": 7,
+    "user": 4,
+    "article_id": 7,
     "comment": "太玄了"
   },
   {
     "id": 10,
-    "avatar": "https://miro.medium.com/v2/resize:fill:55:55/2*TD1Ha3HJ7Ki4AjQeE_-2Xg.png",
-    "username": "Sam Liang",
-    "articleId": 8,
+    "user": 5,
+    "article_id": 8,
     "comment": "已追蹤"
   },
   {
     "id": 11,
-    "avatar": "https://miro.medium.com/v2/resize:fill:55:55/0*M88VM32Ftr5zz1jb.jpg",
-    "username": "Hu Kenneth",
-    "articleId": 5,
+    "user": 1,
+    "article_id": 5,
     "comment": "優秀"
   },
   {
     "id": 12,
-    "avatar": "https://miro.medium.com/v2/resize:fill:55:55/1*ERjtxwhrtDr_XbmmXmy64w.jpeg",
-    "username": "Happy Lee",
-    "articleId": 6,
+    "user": 2,
+    "article_id": 6,
     "comment": "很可以"
   },
   {
     "id": 13,
-    "avatar": "https://miro.medium.com/v2/resize:fill:55:55/2*KMdVTUrr3mbgs7mA3L2mCg.jpeg",
-    "username": "CYL",
-    "articleId": 7,
+    "user": 3,
+    "article_id": 7,
     "comment": "我喜歡"
   },
   {
     "id": 14,
-    "avatar": "https://miro.medium.com/v2/resize:fill:55:55/1*WshmYDXpuekZCg2qCDRTFg.png",
-    "username": "HKEJ",
-    "articleId": 8,
+    "user": 4,
+    "article_id": 8,
     "comment": "已拉黑"
   },
   {
     "id": 15,
-    "avatar": "https://miro.medium.com/v2/resize:fill:55:55/2*TD1Ha3HJ7Ki4AjQeE_-2Xg.png",
-    "username": "Sam Liang",
-    "articleId": 9,
+    "user": 5,
+    "article_id": 9,
     "comment": "也追蹤我好嗎?"
   },
   {
     "id": 16,
-    "avatar": "https://miro.medium.com/v2/resize:fill:55:55/0*M88VM32Ftr5zz1jb.jpg",
-    "username": "Hu Kenneth",
-    "articleId": 10,
+    "user": 1,
+    "article_id": 10,
     "comment": "不可思議"
   },
   {
     "id": 17,
-    "avatar": "https://miro.medium.com/v2/resize:fill:55:55/1*ERjtxwhrtDr_XbmmXmy64w.jpeg",
-    "username": "Happy Lee",
-    "articleId": 1,
+    "user": 2,
+    "article_id": 1,
     "comment": "我覺得真的寫得很好"
   },
   {
     "id": 18,
-    "avatar": "https://miro.medium.com/v2/resize:fill:55:55/2*KMdVTUrr3mbgs7mA3L2mCg.jpeg",
-    "username": "CYL",
-    "articleId": 2,
+    "user": 3,
+    "article_id": 2,
     "comment": "以後都看你的文章"
   },
   {
     "id": 19,
-    "avatar": "https://miro.medium.com/v2/resize:fill:55:55/1*WshmYDXpuekZCg2qCDRTFg.png",
-    "username": "HKEJ",
-    "articleId": 3,
+    "user": 4,
+    "article_id": 3,
     "comment": "..."
   },
   {
     "id": 20,
-    "avatar": "https://miro.medium.com/v2/resize:fill:55:55/2*TD1Ha3HJ7Ki4AjQeE_-2Xg.png",
-    "username": "Sam Liang",
-    "articleId": 4,
+    "user": 5,
+    "article_id": 4,
     "comment": "三條線"
   },
   {
     "id": 21,
-    "avatar": "https://miro.medium.com/v2/resize:fill:55:55/2*TD1Ha3HJ7Ki4AjQeE_-2Xg.png",
-    "username": "Sam Liang",
-    "articleId": 1,
+    "user": 5,
+    "article_id": 1,
     "comment": "測試01"
   },
   {
     "id": 22,
-    "avatar": "https://miro.medium.com/v2/resize:fill:55:55/2*TD1Ha3HJ7Ki4AjQeE_-2Xg.png",
-    "username": "Sam Liang",
-    "articleId": 1,
+    "user": 5,
+    "article_id": 1,
     "comment": "測試02"
   },
   {
     "id": 23,
-    "avatar": "https://miro.medium.com/v2/resize:fill:55:55/2*TD1Ha3HJ7Ki4AjQeE_-2Xg.png",
-    "username": "Sam Liang",
-    "articleId": 1,
+    "user": 5,
+    "article_id": 1,
     "comment": "測試03"
   },
   {
     "id": 24,
-    "avatar": "https://miro.medium.com/v2/resize:fill:55:55/2*TD1Ha3HJ7Ki4AjQeE_-2Xg.png",
-    "username": "Sam Liang",
-    "articleId": 1,
+    "user": 5,
+    "article_id": 1,
     "comment": "測試04"
   },
   {
     "id": 25,
-    "avatar": "https://miro.medium.com/v2/resize:fill:55:55/2*TD1Ha3HJ7Ki4AjQeE_-2Xg.png",
-    "username": "Sam Liang",
-    "articleId": 1,
+    "user": 5,
+    "article_id": 1,
     "comment": "測試05"
   },
   {
     "id": 26,
-    "avatar": "https://miro.medium.com/v2/resize:fill:55:55/2*TD1Ha3HJ7Ki4AjQeE_-2Xg.png",
-    "username": "Sam Liang",
-    "articleId": 1,
+    "user": 5,
+    "article_id": 1,
     "comment": "測試06"
   }
 ]
