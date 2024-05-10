@@ -33,5 +33,12 @@
     "username": "Sam Liang",
     "password": "",
     "email": ""
+  },
+  {
+    "username": "newlean14",
+    "email": "alejandrocsdev@gmail.com",
+    "password": "$2b$10$1Ysy9GMwuSSAKkqKNNBuM.RriFPtFNG1BWBx0SIk8VWef3hpM/Fsq",
+    "id": 6,
+    "avatar": "https://i.imgur.com/c5to1C3.png"
   }
 ]

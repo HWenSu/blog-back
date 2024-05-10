@@ -20,10 +20,16 @@ class UsersService {
 
   async getById(id, key = 'id', one = true) {
     const users = await this.getAll()
-    const comment = one
-      ? users.find((comment) => comment[key] === Number(id))
-      : users.filter((comment) => comment[key] === Number(id))
-    return comment
+    const user = one
+      ? this.users.find((user) => user[key] === Number(id))
+      : this.users.filter((user) => user[key] === Number(id))
+    return user
+  }
+
+  async getByData(data, key) {
+    const users = await this.getAll()
+    const user = this.users.find((user) => user[key] === data)
+    return user
   }
 
   async create(data) {
