@@ -5,6 +5,16 @@ const articlesCategoriesService = require('./articles_categories.js')
 const usersService = require('./users.js')
 
 class ArticlesService extends Service {
+  constructor() {
+    super()
+    this.articles = []
+    this.initialize()
+  }
+
+  async initialize() {
+    this.articles.push(...await this.getAll())
+  }
+
   async getAll() {
     // articles table
     const articles = await articlesModel.read()
@@ -32,19 +42,16 @@ class ArticlesService extends Service {
   }
 
   async getById(id, key = 'id', one = true) {
-    const articles = await this.getAll()
     const article = one
-      ? articles.find((article) => article[key] === Number(id))
-      : articles.filter((article) => article[key] === Number(id))
+      ? this.articles.find((article) => article[key] === Number(id))
+      : this.articles.filter((article) => article[key] === Number(id))
     return article
   }
 
   async getByKeyword(keyword, filter) {
-    const articles = await this.getAll()
-
     const matched = keyword
-      ? articles.filter((article) => this.articleMatches(article, keyword, filter))
-      : articles
+      ? this.articles.filter((article) => this.articleMatches(article, keyword, filter))
+      : this.articles
     return matched
   }
 

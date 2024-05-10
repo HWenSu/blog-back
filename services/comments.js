@@ -3,6 +3,16 @@ const { commentsModel } = require('../models')
 const usersService = require('./users.js')
 
 class CommentsService extends Service {
+  constructor() {
+    super()
+    this.comments = []
+    this.initialize()
+  }
+
+  async initialize() {
+    this.comments.push(...await this.getAll())
+  }
+
   async getAll() {
     // comments table
     const comments = await commentsModel.read()
@@ -20,10 +30,9 @@ class CommentsService extends Service {
   }
 
   async getById(id, key = 'id', one = true) {
-    const comments = await this.getAll()
     const comment = one
-      ? comments.find((comment) => comment[key] === Number(id))
-      : comments.filter((comment) => comment[key] === Number(id))
+      ? this.comments.find((comment) => comment[key] === Number(id))
+      : this.comments.filter((comment) => comment[key] === Number(id))
     return comment
   }
 }

@@ -8,11 +8,13 @@ class ArticlesController {
   }
 
   async getArticles(req, res) {
-    const keyword = req.query.search?.trim()
     const query = req.query
+    const keyword = query.keyword?.trim()
     const filter = query.filter
+
     const allArticles = await articlesService.getByKeyword(keyword, filter)
     const articles = articlesService.feedData(allArticles, query)
+
     res.send(articles)
   }
 }

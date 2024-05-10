@@ -1,9 +1,9 @@
 const fs = require('fs')
 const path = require('path')
 
-class UsersModel {
+class DeletedIdModel {
   constructor() {
-    this.filePath = path.join(__dirname, '../public/data/users.json')
+    this.filePath = path.join(__dirname, '../public/data/deleted_id.json')
   }
 
   read() {
@@ -15,6 +15,6 @@ class UsersModel {
   }
 }
 
-const usersModel = new UsersModel()
+const deletedIdModel = new DeletedIdModel()
 
-module.exports = usersModel
+module.exports = deletedIdModel

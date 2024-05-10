@@ -1,16 +1,24 @@
 const { categoriesModel } = require('../models')
 
 class CategoriesService {
+  constructor() {
+    this.categories = []
+    this.initialize()
+  }
+
+  async initialize() {
+    this.categories.push(...await this.getAll())
+  }
+
   async getAll() {
     const categories = await categoriesModel.read()
     return categories
   }
 
   async getById(id, key = 'id', one = true) {
-    const categories = await this.getAll()
     const category = one
-      ? categories.find((category) => category[key] === Number(id))
-      : categories.filter((category) => category[key] === Number(id))
+      ? this.categories.find((category) => category[key] === Number(id))
+      : this.categories.filter((category) => category[key] === Number(id))
     return category
   }
 
