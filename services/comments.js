@@ -1,16 +1,27 @@
 const Service = require('./service')
-const { commentsModel } = require('../models')
+const { commentsModel, usersModel } = require('../models')
 const usersService = require('./users.js')
 
 class CommentsService extends Service {
   constructor() {
     super()
+    this.original = []
+
+    this.users = []
+
     this.comments = []
     this.initialize()
   }
 
   async initialize() {
+    this.original.push(...await this.getOriginal())
+    this.users.push(...(await usersModel.read()))
     this.comments.push(...await this.getAll())
+  }
+
+  async getOriginal() {
+    const comments = await commentsModel.read()
+    return comments
   }
 
   async getAll() {
@@ -21,7 +32,7 @@ class CommentsService extends Service {
     const commentsUsers = await Promise.all(
       comments.map(async (comment) => {
         const id = comment.user
-        const userData = await usersService.getById(id)
+        const userData = await usersService.getById(this.users, id)
         return { ...comment, user: userData }
       })
     )

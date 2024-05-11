@@ -13,6 +13,23 @@ class Service {
     }
     return newData
   }
+
+  async getById(table, id, key = 'id', one = true) {
+    const result = one
+      ? table.find((data) => data[key] === Number(id))
+      : table.filter((data) => data[key] === Number(id))
+    return result
+  }
+
+  // async getByManyId(ids) {
+  //   const categories = await Promise.all(
+  //     ids.map(async (id) => {
+  //       const category = await this.getById(id)
+  //       return category
+  //     })
+  //   )
+  //   return categories
+  // }
 }
 
 module.exports = Service

@@ -25,6 +25,8 @@ const version = 1
 app.use(cors())
 // 中間件: 解析 JSON 格式的請求主體
 app.use(express.json())
+// 中間件: 
+app.use(express.static('public'))
 // 中間件: 路由器
 const router = require('./routes')
 app.use(router)

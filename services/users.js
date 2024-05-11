@@ -1,42 +1,65 @@
+const Service = require('./service')
 const fs = require('fs')
 const path = require('path')
 
-const { usersModel, deletedIdModel } = require('../models')
+const { usersModel, articlesModel, deletedIdModel } = require('../models')
 
-class UsersService {
+class UsersService extends Service {
   constructor() {
+    super()
+    this.original = []
+
+    this.articles = []
+
     this.users = []
     this.initialize()
   }
 
   async initialize() {
-    this.users.push(...await this.getAll())
+    this.original.push(...(await this.getOriginal()))
+    this.articles.push(...(await articlesModel.read()))
+    this.users.push(...(await this.getAll()))
   }
 
-  async getAll() {
+  async getOriginal() {
     const users = await usersModel.read()
     return users
   }
 
-  async getById(id, key = 'id', one = true) {
-    const users = await this.getAll()
+  async getAll() {
+    // users table
+    const users = await usersModel.read()
+
+    // users table + articles table
+    const usersArticles = await Promise.all(
+      users.map(async (user) => {
+        const id = user.id
+        const articlesData = await this.getById(this.articles, id, 'user', false)
+        return { ...user, articles: articlesData }
+      })
+    )
+
+    return usersArticles
+  }
+
+  async getUserById(id, key = 'id', data = 'original', one = true) {
+    data = data === 'original' ? this.original : this.users
     const user = one
-      ? this.users.find((user) => user[key] === Number(id))
-      : this.users.filter((user) => user[key] === Number(id))
+      ? data.find((user) => user[key] === Number(id))
+      : data.filter((user) => user[key] === Number(id))
     return user
   }
 
   async getByData(data, key) {
-    const users = await this.getAll()
-    const user = this.users.find((user) => user[key] === data)
+    const user = this.original.find((user) => user[key] === data)
     return user
   }
 
   async create(data) {
-    data.id = await this.getNextId(this.users)
-    data.avatar = 'https://i.imgur.com/c5to1C3.png'
-    this.users.push(data)
-    await usersModel.write(this.users)
+    data.id = await this.getNextId(this.original)
+    data.avatar = 'http://localhost:5000/img/guest.png'
+    this.original.push(data)
+    await usersModel.write(this.original)
     return data
   }
 

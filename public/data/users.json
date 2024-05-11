@@ -37,8 +37,8 @@
   {
     "username": "newlean14",
     "email": "alejandrocsdev@gmail.com",
-    "password": "$2b$10$1Ysy9GMwuSSAKkqKNNBuM.RriFPtFNG1BWBx0SIk8VWef3hpM/Fsq",
+    "password": "$2b$10$YExeieERU/tAapHNeItEkel8Otl6y/9.HvmfsqqojGD7Mtb.AASBu",
     "id": 6,
-    "avatar": "https://i.imgur.com/c5to1C3.png"
+    "avatar": "http://localhost:5000/img/guest.png"
   }
 ]

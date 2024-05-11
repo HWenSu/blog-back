@@ -28,6 +28,19 @@ class UsersController {
     res.send(user)
   }
 
+  async getUserArticles(req, res) {
+    const token = req.headers.authorization.split(' ')[1]
+    if (!token) return res.status(401).json({ message: 'No token provided' })
+
+    jwt.verify(token, secretKey, async (err, decoded) => {
+      if (err) return res.status(401).json({ message: 'Failed to authenticate token' })
+      const id = req.params.id
+      const user = await usersService.getUserById(id, 'id', 'user')
+      const articles = user.articles
+      res.send({ message: 'Token authenticated', articles })
+    })
+  }
+
   async logout(req, res) {
     const token = req.headers.authorization.split(' ')[1]
     invalidatedTokens.push(token)

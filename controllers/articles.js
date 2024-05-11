@@ -1,3 +1,8 @@
+const jwt = require('jsonwebtoken')
+const bcrypt = require('bcrypt')
+
+const secretKey = 'your_secret_key_here'
+
 const { articlesService } = require('../services')
 
 class ArticlesController {
@@ -16,6 +21,18 @@ class ArticlesController {
     const articles = articlesService.feedData(allArticles, query)
 
     res.send(articles)
+  }
+
+  createArticle(req, res) {
+    const { user, title, content } = req.body
+    const token = req.headers.authorization.split(' ')[1]
+    if (!token) return res.status(401).json({ message: 'No token provided' })
+
+    jwt.verify(token, secretKey, async (err, decoded) => {
+      if (err) return res.status(401).json({ message: 'Failed to authenticate token' })
+      const article = await articlesService.create({ user, title, content })
+      res.send({ message: 'Token authenticated', user: decoded, article })
+    })
   }
 }
 

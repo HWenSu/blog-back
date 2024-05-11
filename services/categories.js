@@ -1,7 +1,9 @@
+const Service = require('./service')
 const { categoriesModel } = require('../models')
 
-class CategoriesService {
+class CategoriesService extends Service {
   constructor() {
+    super()
     this.categories = []
     this.initialize()
   }

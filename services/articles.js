@@ -1,5 +1,6 @@
 const Service = require('./service')
-const { articlesModel } = require('../models')
+const { articlesModel, categoriesModel, usersModel, deletedIdModel } = require('../models')
+
 const categoriesService = require('./categories.js')
 const articlesCategoriesService = require('./articles_categories.js')
 const usersService = require('./users.js')
@@ -7,12 +8,27 @@ const usersService = require('./users.js')
 class ArticlesService extends Service {
   constructor() {
     super()
+    this.original = []
+
+    this.categories = []
+    this.users = []
+
     this.articles = []
     this.initialize()
   }
 
   async initialize() {
-    this.articles.push(...await this.getAll())
+    this.original.push(...(await this.getOriginal()))
+
+    this.categories.push(...(await categoriesModel.read()))
+    this.users.push(...(await usersModel.read()))
+
+    this.articles.push(...(await this.getAll()))
+  }
+
+  async getOriginal() {
+    const articles = await articlesModel.read()
+    return articles
   }
 
   async getAll() {
@@ -33,7 +49,7 @@ class ArticlesService extends Service {
     const articlesUsers = await Promise.all(
       articlesCategories.map(async (article) => {
         const id = article.user
-        const userData = await usersService.getById(id)
+        const userData = await usersService.getById(this.users, id)
         return { ...article, user: userData }
       })
     )
@@ -69,6 +85,21 @@ class ArticlesService extends Service {
       return Object.values(property).some((value) => this.propertyMatches(value, keyword))
     }
     return false
+  }
+
+  async create(data) {
+    data.id = await this.getNextId(this.original)
+    this.original.push(data)
+    await articlesModel.write(this.original)
+    return data
+  }
+
+  async getNextId(data) {
+    const deletedId = await deletedIdModel.read()
+    const deletedUsersId = deletedId.articles
+    const deletedUsersMaxId = deletedUsersId.length > 0 ? Math.max(...deletedUsersId) : 0
+    const dataMaxId = data.length > 0 ? data.slice(-1)[0].id : 0
+    return Math.max(dataMaxId, deletedUsersMaxId) + 1
   }
 }
 
