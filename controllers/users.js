@@ -5,6 +5,9 @@ const secretKey = 'your_secret_key_here'
 
 const { usersService } = require('../services')
 
+// Define invalidatedTokens array
+let invalidatedTokens = []
+
 class UsersController {
   async login(req, res) {
     const { username, password } = req.body
@@ -28,16 +31,26 @@ class UsersController {
     res.send(user)
   }
 
+  async logout(req, res) {
+    const token = req.headers.authorization.split(' ')[1]
+    if (!token) return res.status(401).json({ message: '查無憑證' })
+
+    // Invalidate token
+    invalidatedTokens.push(token)
+
+    res.sendStatus(200)
+  }
+
   async getUserArticles(req, res) {
     const token = req.headers.authorization.split(' ')[1]
-    if (!token) return res.status(401).json({ message: 'No token provided' })
+    if (!token) return res.status(401).json({ message: '查無憑證' })
 
     jwt.verify(token, secretKey, async (err, decoded) => {
-      if (err) return res.status(401).json({ message: 'Failed to authenticate token' })
+      if (err) return res.status(401).json({ message: '憑證驗證失敗' })
       const id = req.params.id
-      const user = await usersService.getUserById(id, 'id', 'user')
+      const user = await usersService.getById(id, 'id', 'final')
       const articles = user.articles
-      res.send({ message: 'Token authenticated', articles })
+      res.send({ message: '憑證驗證成功', articles })
     })
   }
 

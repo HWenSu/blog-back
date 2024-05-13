@@ -8,7 +8,7 @@ const { articlesService } = require('../services')
 class ArticlesController {
   async getArticle(req, res) {
     const id = req.params.id
-    const article = await articlesService.getById(id)
+    const article = await articlesService.getById(id, 'id', 'final')
     res.send(article)
   }
 

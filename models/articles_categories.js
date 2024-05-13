@@ -4,6 +4,12 @@ const path = require('path')
 class ArticlesCategoriesModel {
   constructor() {
     this.filePath = path.join(__dirname, '../public/data/articles_categories.json')
+    this.articlesCategories = []
+    this.initialize()
+  }
+
+  async initialize() {
+    this.articlesCategories.push(...(await this.read()))
   }
 
   read() {
@@ -12,6 +18,13 @@ class ArticlesCategoriesModel {
 
   write(data) {
     fs.writeFileSync(this.filePath, JSON.stringify(data, null, 2))
+  }
+
+  async getById(id, key = 'article_id', one = true) {
+    const articlesCategories = one
+      ? this.articlesCategories.find((enrolment) => enrolment[key] === Number(id))
+      : this.articlesCategories.filter((enrolment) => enrolment[key] === Number(id))
+    return articlesCategories
   }
 }
 

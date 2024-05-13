@@ -1,18 +1,24 @@
-const { articlesCategoriesModel } = require('../models')
+const Service = require('./base')
 
-class ArticlesCategoriesService {
-  async getAll() {
-    const articlesCategories = await articlesCategoriesModel.read()
-    return articlesCategories
-  }
+// const { articlesCategoriesModel } = require('../models')
 
-  async getById(id, key = 'id', one = true) {
-    const enrollments = await this.getAll()
-    const enrollment = one
-      ? enrollments.find((category_id) => category_id[key] === Number(id))
-      : enrollments.filter((category_id) => category_id[key] === Number(id))
-    return enrollment.map((object)=> object.category_id)
-  }
+class ArticlesCategoriesService extends Service {
+  // constructor() {
+  //   super()
+  // }
+
+  // async getAll() {
+  //   const articlesCategories = await articlesCategoriesModel.read()
+  //   return articlesCategories
+  // }
+
+  // async getById(id, key = 'id', one = true) {
+  //   const enrollments = await this.getAll()
+  //   const enrollment = one
+  //     ? enrollments.find((category_id) => category_id[key] === Number(id))
+  //     : enrollments.filter((category_id) => category_id[key] === Number(id))
+  //   return enrollment.map((object) => object.category_id)
+  // }
 }
 
 const articlesCategoriesService = new ArticlesCategoriesService()

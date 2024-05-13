@@ -4,6 +4,12 @@ const path = require('path')
 class CommentsModel {
   constructor() {
     this.filePath = path.join(__dirname, '../public/data/comments.json')
+    this.comments = []
+    this.initialize()
+  }
+
+  async initialize() {
+    this.comments.push(...(await this.read()))
   }
   
   read() {
@@ -12,6 +18,13 @@ class CommentsModel {
 
   write(data) {
     fs.writeFileSync(this.filePath, JSON.stringify(data, null, 2))
+  }
+
+  async getById(id, key = 'id', one = true) {
+    const comments = one
+      ? this.comments.find((comment) => comment[key] === Number(id))
+      : this.comments.filter((comment) => comment[key] === Number(id))
+    return comments
   }
 }
 

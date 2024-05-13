@@ -1,23 +1,21 @@
-const Service = require('./service')
-const fs = require('fs')
-const path = require('path')
+const Service = require('./base')
 
 const { usersModel, articlesModel, deletedIdModel } = require('../models')
 
 class UsersService extends Service {
   constructor() {
     super()
+    // original
     this.original = []
-
-    this.articles = []
-
+    // final table
     this.users = []
     this.initialize()
   }
 
   async initialize() {
+    // original
     this.original.push(...(await this.getOriginal()))
-    this.articles.push(...(await articlesModel.read()))
+    // final table
     this.users.push(...(await this.getAll()))
   }
 
@@ -34,15 +32,14 @@ class UsersService extends Service {
     const usersArticles = await Promise.all(
       users.map(async (user) => {
         const id = user.id
-        const articlesData = await this.getById(this.articles, id, 'user', false)
-        return { ...user, articles: articlesData }
+        const articles = await articlesModel.getById(id, 'user', false)
+        return { ...user, articles }
       })
     )
-
     return usersArticles
   }
 
-  async getUserById(id, key = 'id', data = 'original', one = true) {
+  async getById(id, key = 'id', data = 'original', one = true) {
     data = data === 'original' ? this.original : this.users
     const user = one
       ? data.find((user) => user[key] === Number(id))

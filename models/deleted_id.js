@@ -4,6 +4,12 @@ const path = require('path')
 class DeletedIdModel {
   constructor() {
     this.filePath = path.join(__dirname, '../public/data/deleted_id.json')
+    this.deletedId = []
+    this.initialize()
+  }
+
+  async initialize() {
+    this.deletedId.push(await this.read())
   }
 
   read() {

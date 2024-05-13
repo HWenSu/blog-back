@@ -1,28 +1,27 @@
-const Service = require('./service')
-const { articlesModel, categoriesModel, usersModel, deletedIdModel } = require('../models')
+const Service = require('./base')
 
-const categoriesService = require('./categories.js')
-const articlesCategoriesService = require('./articles_categories.js')
-const usersService = require('./users.js')
+const {
+  articlesModel,
+  categoriesModel,
+  articlesCategoriesModel,
+  usersModel,
+  deletedIdModel
+} = require('../models')
 
 class ArticlesService extends Service {
   constructor() {
     super()
+    // original
     this.original = []
-
-    this.categories = []
-    this.users = []
-
+    // final table
     this.articles = []
     this.initialize()
   }
 
   async initialize() {
+    // original
     this.original.push(...(await this.getOriginal()))
-
-    this.categories.push(...(await categoriesModel.read()))
-    this.users.push(...(await usersModel.read()))
-
+    // final table
     this.articles.push(...(await this.getAll()))
   }
 
@@ -39,28 +38,33 @@ class ArticlesService extends Service {
     const articlesCategories = await Promise.all(
       articles.map(async (article) => {
         const id = article.id
-        const idData = await articlesCategoriesService.getById(id, 'article_id', false)
-        const categoriesData = await categoriesService.getByManyId(idData)
-        return { ...article, categories: categoriesData }
+        const articleCategories = await articlesCategoriesModel.getById(id, 'article_id', false)
+        const categories = await Promise.all(
+          articleCategories.map(async (enrolment) => {
+            const id = enrolment.category_id
+            return await categoriesModel.getById(id)
+          })
+        )
+        return { ...article, categories }
       })
     )
-
     // articles table + users table
     const articlesUsers = await Promise.all(
       articlesCategories.map(async (article) => {
         const id = article.user
-        const userData = await usersService.getById(this.users, id)
-        return { ...article, user: userData }
+        const user = await usersModel.getById(id)
+        return { ...article, user }
       })
     )
 
     return articlesUsers
   }
 
-  async getById(id, key = 'id', one = true) {
+  async getById(id, key = 'id', data = 'original', one = true) {
+    data = data === 'original' ? this.original : this.articles
     const article = one
-      ? this.articles.find((article) => article[key] === Number(id))
-      : this.articles.filter((article) => article[key] === Number(id))
+      ? data.find((article) => article[key] === Number(id))
+      : data.filter((article) => article[key] === Number(id))
     return article
   }
 
