@@ -1,3 +1,6 @@
+const fs = require('fs')
+const path = require('path')
+
 function timestamp() {
   const now = new Date()
   const year = now.getFullYear()
@@ -10,4 +13,20 @@ function timestamp() {
   return `${year}${month}${day}${hours}${minutes}${seconds}`
 }
 
-module.exports = timestamp
+function encodeImageToBase64(imagePath) {
+  const imageBuffer = fs.readFileSync(imagePath)
+  return imageBuffer.toString('base64')
+}
+
+function imageFolder(id) {
+  const folderPath = path.join(__dirname, `../public/uploads/${id}`)
+  fs.mkdirSync(folderPath, { recursive: true }, (err) => {
+    if (err) {
+      console.error('Error creating directory:', err)
+      return
+    }
+    console.log('Directory created successfully')
+  })
+}
+
+module.exports = { timestamp, encodeImageToBase64, imageFolder }

@@ -1,5 +1,7 @@
 const Service = require('./base')
 
+const { encodeImageToBase64 } = require('../utils')
+
 const { usersModel, articlesModel, deletedIdModel } = require('../models')
 
 class UsersService extends Service {
@@ -58,6 +60,18 @@ class UsersService extends Service {
     this.original.push(data)
     await usersModel.write(this.original)
     return data
+  }
+
+  async update(data) {
+    const id = data.id
+    this.original.map((user) => {
+      if (user.id === id) {
+        user = data
+        return { ...user }
+      }
+      return user
+    })
+    await usersModel.write(this.original)
   }
 
   async getNextId(data) {

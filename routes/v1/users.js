@@ -1,12 +1,14 @@
 const { Router } = require('express')
 const router = Router()
 
-const timestamp = require('../../utils')
+const { timestamp, imageFolder } = require('../../utils')
 
 const multer = require('multer')
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'public/uploads/')
+    const id = req.params.id
+    imageFolder(id)
+    cb(null, `public/uploads/${id}/`)
   },
   filename: function (req, file, cb) {
     cb(null, timestamp() + '-' + file.originalname)
@@ -20,7 +22,7 @@ const { usersController } = require('../../controllers')
 router.post('/login', usersController.login)
 router.post('/register', usersController.register)
 router.post('/logout', usersController.logout)
-router.post('/upload', upload.single('file'), usersController.upload)
+router.post('/:id/upload', upload.single('file'), usersController.upload)
 router.get('/:id/articles', usersController.getUserArticles)
 
 module.exports = router

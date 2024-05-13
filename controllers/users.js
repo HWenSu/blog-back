@@ -3,6 +3,8 @@ const bcrypt = require('bcrypt')
 
 const secretKey = 'your_secret_key_here'
 
+const { encodeImageToBase64 } = require('../utils')
+
 const { usersService } = require('../services')
 
 // Define invalidatedTokens array
@@ -56,9 +58,25 @@ class UsersController {
 
   async upload(req, res) {
     const token = req.headers.authorization.split(' ')[1]
-    console.log(token)
-    console.log(req.file)
-    res.send(req.file)
+    if (!token) return res.status(401).json({ message: '查無憑證' })
+
+    jwt.verify(token, secretKey, async (err, decoded) => {
+      if (err) return res.status(401).json({ message: '憑證驗證失敗' })
+      const file = req.file
+      const path = file.path
+
+      const id = req.params.id
+      const user = await usersService.getById(id)
+
+      user.avatar = `http://localhost:5000/uploads/${id}/${file.filename}`
+      console.log('user.avatar: ', user.avatar)
+
+      await usersService.update(user)
+
+      const { avatar, username, email } = user
+
+      res.send({ message: '會員頭像更新成功', file, user: { id, avatar, username, email } })
+    })
   }
 
   verifyToken(req, res, next) {
