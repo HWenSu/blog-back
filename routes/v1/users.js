@@ -22,7 +22,7 @@ const { usersController } = require('../../controllers')
 router.post('/login', usersController.login)
 router.post('/register', usersController.register)
 router.post('/logout', usersController.logout)
-router.post('/:id/upload', upload.single('file'), usersController.upload)
+router.patch('/:id/upload', upload.single('file'), usersController.upload)
 router.get('/:id/articles', usersController.getUserArticles)
 
 module.exports = router

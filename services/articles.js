@@ -38,7 +38,7 @@ class ArticlesService extends Service {
     const articlesCategories = await Promise.all(
       articles.map(async (article) => {
         const id = article.id
-        const articleCategories = await articlesCategoriesModel.getById(id, 'article_id', false)
+        const articleCategories = await articlesCategoriesModel.getById(id, 'articleId', false)
         const categories = await Promise.all(
           articleCategories.map(async (enrolment) => {
             const id = enrolment.category_id

@@ -48,6 +48,13 @@ class CommentsService extends Service {
     return comment
   }
 
+  async create(data) {
+    data.id = await this.getNextId(this.original)
+    this.original.push(data)
+    await commentsModel.write(this.original)
+    return data
+  }
+
   async getNextId(data) {
     const deletedId = await deletedIdModel.read()
     const deletedUsersId = deletedId.comments

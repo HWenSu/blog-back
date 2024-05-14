@@ -26,12 +26,12 @@ class ArticlesController {
   createArticle(req, res) {
     const { user, title, content } = req.body
     const token = req.headers.authorization.split(' ')[1]
-    if (!token) return res.status(401).json({ message: 'No token provided' })
+    if (!token) return res.status(401).json({ message: '查無憑證' })
 
     jwt.verify(token, secretKey, async (err, decoded) => {
-      if (err) return res.status(401).json({ message: 'Failed to authenticate token' })
+      if (err) return res.status(401).json({ message: '憑證驗證失敗' })
       const article = await articlesService.create({ user, title, content })
-      res.send({ message: 'Token authenticated', user: decoded, article })
+      res.send({ message: '憑證驗證成功', user: decoded, article })
     })
   }
 }
