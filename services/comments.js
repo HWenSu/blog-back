@@ -40,11 +40,14 @@ class CommentsService extends Service {
     return commentsUsers
   }
 
-  async getById(id, key = 'id', data = 'original', one = true) {
+  async getById(id, key = 'id', data = 'original', one = true, sort = false) {
     data = data === 'original' ? this.original : this.comments
-    const comment = one
+    let comment = one
       ? data.find((comment) => comment[key] === Number(id))
       : data.filter((comment) => comment[key] === Number(id))
+    if (sort && !one) {
+      comment.sort((a, b) => b.id - a.id)
+    }
     return comment
   }
 
@@ -52,6 +55,7 @@ class CommentsService extends Service {
     data.id = await this.getNextId(this.original)
     this.original.push(data)
     await commentsModel.write(this.original)
+    this.comments = await this.getAll()
     return data
   }
 
