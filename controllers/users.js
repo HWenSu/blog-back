@@ -7,7 +7,6 @@ const { encodeImageToBase64 } = require('../utils')
 
 const { usersService } = require('../services')
 
-// Define invalidatedTokens array
 let invalidatedTokens = []
 
 class UsersController {
@@ -23,24 +22,23 @@ class UsersController {
     }
     const token = jwt.sign({ id: user.id }, secretKey)
     const { id, avatar, email } = user
-    res.send({ token, user: { id, avatar, username, email } })
+    res.send({ message: '登入成功', token, user: { id, avatar, username, email } })
   }
 
   async register(req, res) {
     const { username, email, password } = req.body
     const hashedPassword = await bcrypt.hash(password, 10)
     const user = await usersService.create({ username, email, password: hashedPassword })
-    res.send(user)
+    res.send({ message: '註冊成功', user })
   }
 
   async logout(req, res) {
     const token = req.headers.authorization.split(' ')[1]
     if (!token) return res.status(401).json({ message: '查無憑證' })
 
-    // Invalidate token
     invalidatedTokens.push(token)
 
-    res.sendStatus(200)
+    res.send({ message: '登出成功' })
   }
 
   async getUserArticles(req, res) {
