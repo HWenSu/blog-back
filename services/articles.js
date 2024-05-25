@@ -23,6 +23,7 @@ class ArticlesService extends Service {
     this.original.push(...(await this.getOriginal()))
     // final table
     this.articles.push(...(await this.getAll()))
+    // console.log(this.articles)
   }
 
   async getOriginal() {
@@ -41,7 +42,7 @@ class ArticlesService extends Service {
         const articleCategories = await articlesCategoriesModel.getById(id, 'articleId', false)
         const categories = await Promise.all(
           articleCategories.map(async (enrolment) => {
-            const id = enrolment.category_id
+            const id = enrolment.categoryId
             return await categoriesModel.getById(id)
           })
         )

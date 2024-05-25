@@ -20,7 +20,7 @@ class ArticlesCategoriesModel {
     fs.writeFileSync(this.filePath, JSON.stringify(data, null, 2))
   }
 
-  async getById(id, key = 'article_id', one = true) {
+  async getById(id, key = 'articleId', one = true) {
     const articlesCategories = one
       ? this.articlesCategories.find((enrolment) => enrolment[key] === Number(id))
       : this.articlesCategories.filter((enrolment) => enrolment[key] === Number(id))

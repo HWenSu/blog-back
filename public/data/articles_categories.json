@@ -1,94 +1,94 @@
 [
   {
-    "article_id": 1,
-    "category_id": 1
+    "articleId": 1,
+    "categoryId": 1
   },
   {
-    "article_id": 1,
-    "category_id": 2
+    "articleId": 1,
+    "categoryId": 2
   },
   {
-    "article_id": 1,
-    "category_id": 3
+    "articleId": 1,
+    "categoryId": 3
   },
   {
-    "article_id": 2,
-    "category_id": 2
+    "articleId": 2,
+    "categoryId": 2
   },
   {
-    "article_id": 2,
-    "category_id": 3
+    "articleId": 2,
+    "categoryId": 3
   },
   {
-    "article_id": 3,
-    "category_id": 3
+    "articleId": 3,
+    "categoryId": 3
   },
   {
-    "article_id": 4,
-    "category_id": 2
+    "articleId": 4,
+    "categoryId": 2
   },
   {
-    "article_id": 4,
-    "category_id": 4
+    "articleId": 4,
+    "categoryId": 4
   },
   {
-    "article_id": 5,
-    "category_id": 1
+    "articleId": 5,
+    "categoryId": 1
   },
   {
-    "article_id": 5,
-    "category_id": 2
+    "articleId": 5,
+    "categoryId": 2
   },
   {
-    "article_id": 5,
-    "category_id": 5
+    "articleId": 5,
+    "categoryId": 5
   },
   {
-    "article_id": 6,
-    "category_id": 5
+    "articleId": 6,
+    "categoryId": 5
   },
   {
-    "article_id": 6,
-    "category_id": 6
+    "articleId": 6,
+    "categoryId": 6
   },
   {
-    "article_id": 6,
-    "category_id": 7
+    "articleId": 6,
+    "categoryId": 7
   },
   {
-    "article_id": 7,
-    "category_id": 1
+    "articleId": 7,
+    "categoryId": 1
   },
   {
-    "article_id": 7,
-    "category_id": 8
+    "articleId": 7,
+    "categoryId": 8
   },
   {
-    "article_id": 7,
-    "category_id": 9
+    "articleId": 7,
+    "categoryId": 9
   },
   {
-    "article_id": 8,
-    "category_id": 6
+    "articleId": 8,
+    "categoryId": 6
   },
   {
-    "article_id": 9,
-    "category_id": 9
+    "articleId": 9,
+    "categoryId": 9
   },
   {
-    "article_id": 9,
-    "category_id": 10
+    "articleId": 9,
+    "categoryId": 10
   },
   {
-    "article_id": 10,
-    "category_id": 3
+    "articleId": 10,
+    "categoryId": 3
   },
   {
-    "article_id": 10,
-    "category_id": 7
+    "articleId": 10,
+    "categoryId": 7
   },
   {
-    "article_id": 10,
-    "category_id": 8
+    "articleId": 10,
+    "categoryId": 8
   }
 ]

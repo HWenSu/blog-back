@@ -67,7 +67,6 @@ class UsersController {
       const user = await usersService.getById(id)
 
       user.avatar = `http://localhost:5000/uploads/${id}/${file.filename}`
-      console.log('user.avatar: ', user.avatar)
 
       await usersService.update(user)
 
