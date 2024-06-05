@@ -99,6 +99,24 @@ class ArticlesService extends Service {
     return data
   }
 
+  async update(data) {
+    // Find the index of the article to update
+    const index = this.original.findIndex((e) => e.id === data.id)
+    if (index !== -1) {
+      // Update the article in the original array
+      this.original[index] = {
+        ...this.original[index], // Spread the existing properties
+        ...data // Overwrite with the new data
+      }
+
+      // Save the updated article back to the database
+      await articlesModel.write(this.original)
+      return data
+    } else {
+      throw new Error('Article not found')
+    }
+  }
+
   async getNextId(data) {
     const deletedId = await deletedIdModel.read()
     const deletedUsersId = deletedId.articles

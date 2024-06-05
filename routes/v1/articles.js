@@ -4,7 +4,9 @@ const router = Router()
 const { articlesController } = require('../../controllers')
 
 router.get('/', articlesController.getArticles)
-router.get('/:id', articlesController.getArticle)
 router.post('/create', articlesController.createArticle)
+router.put('/:articleId/edit', articlesController.editArticle)
+router.delete('/:articleId/delete', articlesController.deleteArticle)
+router.get('/:id', articlesController.getArticle)
 
 module.exports = router
