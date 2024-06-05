@@ -15,15 +15,17 @@ class CommentsController {
   }
 
   async createComment(req, res) {
-    const { userId, articleId } = req.params
+    const { articleId } = req.params
+    const { comment } = req.body
 
     const token = req.headers.authorization.split(' ')[1]
     if (!token) return res.status(401).json({ message: '查無憑證' })
 
     jwt.verify(token, secretKey, async (err, decoded) => {
       if (err) return res.status(401).json({ message: '憑證驗證失敗' })
-      const comment = await commentsService.create({ user: Number(userId), articleId: Number(articleId), comment: req.body.comment })
-      res.send({ message: '留言成功', user: decoded, comment })
+      const userId = decoded.id
+      const commentData = await commentsService.create({ user: Number(userId), articleId: Number(articleId), comment })
+      res.send({ message: '留言成功', comment: commentData })
     })
   }
 }
