@@ -117,6 +117,28 @@ class ArticlesService extends Service {
     }
   }
 
+  async delete(id) {
+    // Find the index of the article to delete
+    const index = this.original.findIndex((e) => e.id === id)
+
+    if (index !== -1) {
+      // Remove the article from the original array
+      const [deletedArticle] = this.original.splice(index, 1)
+
+      // Update the articles table in the database
+      await articlesModel.write(this.original)
+
+      // Optionally, you can also keep track of deleted article IDs if necessary
+      const deletedId = await deletedIdModel.read()
+      deletedId.articles.push(deletedArticle.id)
+      await deletedIdModel.write(deletedId)
+
+      return { success: true, message: 'Article deleted successfully' }
+    } else {
+      throw new Error('Article not found')
+    }
+  }
+
   async getNextId(data) {
     const deletedId = await deletedIdModel.read()
     const deletedUsersId = deletedId.articles

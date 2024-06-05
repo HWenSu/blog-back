@@ -51,15 +51,14 @@ class ArticlesController {
   }
 
   deleteArticle(req, res) {
-    const { title, content } = req.body
+    const { articleId } = req.params
     const token = req.headers.authorization.split(' ')[1]
     if (!token) return res.status(401).json({ message: '查無憑證' })
 
     jwt.verify(token, secretKey, async (err, decoded) => {
       if (err) return res.status(401).json({ message: '憑證驗證失敗' })
-      const user = decoded.id
-      const article = await articlesService.create({ user, title, content })
-      res.send({ message: '新增文章成功', article })
+      await articlesService.delete(Number(articleId))
+      res.send({ message: '刪除文章成功' })
     })
   }
 }
