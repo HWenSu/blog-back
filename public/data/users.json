@@ -3,36 +3,36 @@
     "id": 1,
     "avatar": "https://miro.medium.com/v2/resize:fill:55:55/0*M88VM32Ftr5zz1jb.jpg",
     "username": "Hu Kenneth",
-    "password": "",
-    "email": ""
+    "password": "$2a$10$KtpNpBK4.zY4a9yO3FLzLO8r9RyDyJc2fmeinMdtcVFMNoLeQoTNy",
+    "email": "one"
   },
   {
     "id": 2,
     "avatar": "https://miro.medium.com/v2/resize:fill:55:55/1*ERjtxwhrtDr_XbmmXmy64w.jpeg",
     "username": "Happy Lee",
-    "password": "",
-    "email": ""
+    "password": "$2a$10$xVZ9NUQI6kuv2We2dWCnHerECVkzE2GcvoWscdII3rBd/Gs9cqYnW",
+    "email": "two"
   },
   {
     "id": 3,
     "avatar": "https://miro.medium.com/v2/resize:fill:55:55/2*KMdVTUrr3mbgs7mA3L2mCg.jpeg",
     "username": "CYL",
-    "password": "",
-    "email": ""
+    "password": "$2a$10$u7.KwC/JI6Qst6qqsD/89ezLjql3kEqBq82aBbZ8rQaCcRWlKe0ve",
+    "email": "three"
   },
   {
     "id": 4,
     "avatar": "https://miro.medium.com/v2/resize:fill:55:55/1*WshmYDXpuekZCg2qCDRTFg.png",
     "username": "HKEJ",
-    "password": "",
-    "email": ""
+    "password": "$2a$10$c0L2T1RepwrfywlU1p2IQeSVCa3JKvXIAli1AKvCpSeT.lLnRfQLq",
+    "email": "four"
   },
   {
     "id": 5,
     "avatar": "https://miro.medium.com/v2/resize:fill:55:55/2*TD1Ha3HJ7Ki4AjQeE_-2Xg.png",
     "username": "Sam Liang",
-    "password": "",
-    "email": ""
+    "password": "$2a$10$5ikMC2xBK8cSkf/UFU.q1uLrkBcl4orAxlUctf3jDHhpxHlDUD0Ny",
+    "email": "five"
   },
   {
     "username": "newlean14",
@@ -46,6 +46,6 @@
     "email": "root@gmail.com",
     "password": "$2b$10$GYxUS5NcyT65lfktO1hd.uP2BvByVitwc9HRKnAKG4K01cpUrdwca",
     "id": 7,
-    "avatar": ""
+    "avatar": "http://localhost:5000/uploads/7/20240606003024-Asset 2.png"
   }
 ]
