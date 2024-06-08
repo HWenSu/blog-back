@@ -8,7 +8,7 @@
   },
   {
     "id": 2,
-    "avatar": "http://localhost:5000/uploads/2/20240608205257-test02.jpg",
+    "avatar": "http://localhost:5000/uploads/2/20240608205812-guest.png",
     "username": "Happy Lee",
     "password": "$2a$10$xVZ9NUQI6kuv2We2dWCnHerECVkzE2GcvoWscdII3rBd/Gs9cqYnW",
     "email": "happy.lee@gmail.com"
