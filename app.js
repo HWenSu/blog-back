@@ -21,8 +21,13 @@ const port = process.env.PORT || 5000;
 // 版本
 const version = 1
 
-// 中間件: 跨來源資源共用
-app.use(cors())
+// 配置 CORS，允許特定來源
+const corsOptions = {
+  origin: 'https://elva-blog.zeabur.app', // 允許的前端來源
+  optionsSuccessStatus: 200 // 處理舊版瀏覽器
+};
+app.use(cors(corsOptions));
+
 // 中間件: 解析 JSON 格式的請求主體
 app.use(express.json())
 // 中間件: 
