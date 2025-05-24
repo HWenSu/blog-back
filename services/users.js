@@ -4,9 +4,6 @@ const { encodeImageToBase64 } = require('../utils')
 
 const { usersModel, articlesModel, deletedIdModel } = require('../models')
 
-// 端口（使用 Zeabur 的 PORT 或本地預設 5000）
-const port = process.env.PORT || 5000;
-
 class UsersService extends Service {
   constructor() {
     super()
@@ -59,7 +56,7 @@ class UsersService extends Service {
 
   async create(data) {
     data.id = await this.getNextId(this.original)
-    data.avatar = `${port}/img/guest.png`
+    data.avatar = "https://elva-blog-back.zeabur.app/img/guest.png"
     this.original.push(data)
     await usersModel.write(this.original)
     return data
