@@ -4,7 +4,8 @@ const { encodeImageToBase64 } = require('../utils')
 
 const { usersModel, articlesModel, deletedIdModel } = require('../models')
 
-const { port } = require('../app.js');
+// 端口（使用 Zeabur 的 PORT 或本地預設 5000）
+const port = process.env.PORT || 5000;
 
 class UsersService extends Service {
   constructor() {

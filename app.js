@@ -47,5 +47,3 @@ app.listen(port, () => {
   console.log(`http://localhost:${port}/v${version}/articles`)
 })
 
-// 導出 port
-module.exports = { port };
