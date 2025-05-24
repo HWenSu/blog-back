@@ -16,8 +16,8 @@ const cors = require('cors')
 
 // express專案取名app
 const app = express()
-// 端口
-const port = 5000
+// 端口（使用 Zeabur 的 PORT 或本地預設 5000）
+const port = process.env.PORT || 5000;
 // 版本
 const version = 1
 
