@@ -4,6 +4,8 @@ const { encodeImageToBase64 } = require('../utils')
 
 const { usersModel, articlesModel, deletedIdModel } = require('../models')
 
+const { port } = require('../app.js');
+
 class UsersService extends Service {
   constructor() {
     super()
@@ -56,7 +58,7 @@ class UsersService extends Service {
 
   async create(data) {
     data.id = await this.getNextId(this.original)
-    data.avatar = 'http://localhost:5000/img/guest.png'
+    data.avatar = `${port}/img/guest.png`
     this.original.push(data)
     await usersModel.write(this.original)
     return data
