@@ -66,7 +66,7 @@ class UsersController {
       const id = req.params.id
       const user = await usersService.getById(id)
 
-      user.avatar = `https://elva-blog-back.zeabur.app/uploads/${id}/${file.filename}`
+      user.avatar = `https://elva-blog-back.zeabur.app/v1/uploads/${id}/${file.filename}`
 
       await usersService.update(user)
 
